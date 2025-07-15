@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import { useContext } from 'react';
 import { AppContext } from './context/AppContext';
 import AdminRoute from './components/AdminRoutes';
+import Admin from './pages/Admin';
 
 
 export const App = () => {
@@ -21,7 +22,7 @@ export const App = () => {
         <Route path='/auth' element={!isLoggedin?<Login />:<Navigate to={'/'}/>} />
         <Route path='/admin' element={
           <AdminRoute>
-            <Home/>
+            <Admin/>
           </AdminRoute>
           } />
 

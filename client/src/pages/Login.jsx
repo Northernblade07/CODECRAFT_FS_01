@@ -26,7 +26,6 @@ const Login = () => {
  console.log(response.data)
               if(response.data.success){
                   setState("login")
-                setIsLoggedin(true)
               }else{
                 // toast.error(response.data)
               }

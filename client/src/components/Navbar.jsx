@@ -5,11 +5,10 @@ import axios from 'axios'
 import { useContext } from 'react'
 import { AppContext } from '../context/AppContext.jsx'
 
-function Navbar({isLoggedin}) {
-    console.log(isLoggedin)
+function Navbar() {
 
     const navigate = useNavigate()
-const {backendUrl,setUserData, setIsLoggedin} =useContext(AppContext)
+const {backendUrl,setUserData,isLoggedin, setIsLoggedin} =useContext(AppContext)
     const handleLogout = async()=>{
         try {
             const res = await axios.post(`${backendUrl}/api/auth/logout`)
@@ -32,7 +31,15 @@ const {backendUrl,setUserData, setIsLoggedin} =useContext(AppContext)
         className='h-16 rounded-full shadow-sm border border-white'
       />
 
-    {isLoggedin &&  <button
+       <button
+        onClick={()=>navigate('/admin')}
+        className='flex items-center gap-2 px-6 py-2 text-sm rounded-full text-white hover:scale-105 transition-transform duration-200 shadow'
+      >
+        admin route
+        {/* <img src={assets.arrow_icon} alt="Arrow" className='w-4 h-4' /> */}
+      </button>
+
+    {isLoggedin && <button
         onClick={handleLogout}
         className='flex items-center gap-2 px-6 py-2 text-sm rounded-full text-white bg-red-600 hover:bg-red-700 hover:scale-105 transition-transform duration-200 shadow'
       >
